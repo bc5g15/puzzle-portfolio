@@ -1,9 +1,14 @@
 import { debugLightPuzzle } from "./puzzles/lights";
+import { debugRotaryLock } from "./puzzles/rotary_lock";
 
 const sections = [
     {
-        title: 'Light Puzzle',
+        title: 'Lights',
         content: debugLightPuzzle
+    },
+    {
+        title: 'Rotary Lock',
+        content: debugRotaryLock
     }
 ];
 
