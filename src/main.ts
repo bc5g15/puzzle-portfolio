@@ -1,10 +1,9 @@
+import { debugLightPuzzle } from "./puzzles/lights";
 
 const sections = [
     {
-        title: 'Sample A'
-    },
-    {
-        title: 'Sample B'
+        title: 'Light Puzzle',
+        content: debugLightPuzzle
     }
 ];
 
@@ -18,15 +17,28 @@ navbar.style.flexDirection = 'column';
 navbar.style.width = 'fit-content';
 navbar.style.padding = '1em';
 
+const content = document.createElement('div');
+content.innerText = "Click on a puzzle name to display it"
+
+const emptyNode = (node: HTMLElement) => {
+    while (node.firstChild) {
+        node.removeChild(node.firstChild);
+    }
+}
+
 // Build navbar headings
 for (let section of sections) {
     const link = document.createElement('div');
     link.innerText = section.title;
+    link.style.paddingBottom = '0.5em';
+    link.style.cursor = 'pointer';
+    link.onclick = () => {
+        emptyNode(content);
+        content.append(section.content());
+    }
     navbar.append(link);
 }
 
-const content = document.createElement('div');
-content.innerText = "LONG FORM CONTENT GOES HERE SOMEHOW BUT I'M NOT SURE HOW IT WILL WORK WITH THE ABSOLUTE"
 
 document.body.append(root);
 root.append(navbar, content);
